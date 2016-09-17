@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    android:background="#0099cc">
+    android:background="@android:color/transparent">
 
     <TextView
         android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        tools:text="230"
-        android:textColor="#33b5e5"
+        tools:text="230,55 €"
+        android:textColor="@color/colorAccent"
         android:textSize="50sp"
         android:textStyle="bold" />
 

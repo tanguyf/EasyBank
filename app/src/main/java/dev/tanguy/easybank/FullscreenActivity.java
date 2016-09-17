@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 
 public class FullscreenActivity extends AppCompatActivity {
 
@@ -90,7 +93,8 @@ public class FullscreenActivity extends AppCompatActivity {
     }
 
     private void updateUI(){
-        amountView.setText("" + amount);
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
+        amountView.setText(numberFormat.format(amount));
         Intent intent = new Intent(this, EasyWidgetProvider.class);
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         int[] ids = AppWidgetManager.getInstance(getApplication())
@@ -113,7 +117,8 @@ public class FullscreenActivity extends AppCompatActivity {
 
                 RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
                 views.setOnClickPendingIntent(R.id.amount, pendingIntent);
-                views.setTextViewText(R.id.amount, ""+amount);
+                NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
+                views.setTextViewText(R.id.amount, numberFormat.format(amount));
 
                 appWidgetManager.updateAppWidget(appWidgetId, views);
             }
