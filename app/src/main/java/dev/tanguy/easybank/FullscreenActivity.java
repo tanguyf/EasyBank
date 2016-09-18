@@ -26,6 +26,8 @@ public class FullscreenActivity extends AppCompatActivity {
 
     static final int PLUS_REQUEST = 1;
     static final int MINUS_REQUEST = 2;
+    public static final String PLUS_ACTION = "+";
+    public static final String MINUS_ACTION = "-";
     private static final String PREFS = "PREFERENCES";
     private static float amount;
     private TextView amountView;
@@ -53,7 +55,13 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private void startInputActivity(boolean plus) {
         Intent intent = new Intent(this, InputActivity.class);
+        intent.setAction(plus ? PLUS_ACTION : MINUS_ACTION);
         startActivityForResult(intent, plus ? PLUS_REQUEST : MINUS_REQUEST);
+    }
+
+    public void startHistoryActivity(View view){
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -102,6 +110,7 @@ public class FullscreenActivity extends AppCompatActivity {
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
         sendBroadcast(intent);
     }
+
 
     public static class EasyWidgetProvider extends AppWidgetProvider {
 

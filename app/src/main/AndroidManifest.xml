@@ -25,6 +25,10 @@
             android:windowSoftInputMode="stateVisible">
         </activity>
 
+        <activity
+            android:name=".HistoryActivity">
+        </activity>
+
         <receiver android:name="FullscreenActivity$EasyWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
